@@ -20,20 +20,6 @@
 
     <dependencies>
 
-        <!--	for mac os-->
-        <!--	<dependencyManagement>-->
-        <!--		<dependencies>-->
-        <!--			<dependency>-->
-        <!--				<groupId>org.glassfish.jersey</groupId>-->
-        <!--				<artifactId>jersey-bom</artifactId>-->
-        <!--				<version>${glassfish.version}</version>-->
-        <!--				<type>pom</type>-->
-        <!--				<scope>import</scope>-->
-        <!--			</dependency>-->
-        <!--		</dependencies>-->
-        <!--	</dependencyManagement>-->
-
-
         <!-- https://mvnrepository.com/artifact/org.telegram/telegrambots-spring-boot-starter -->
         <dependency>
             <groupId>org.telegram</groupId>
@@ -72,6 +58,19 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <!--        	for mac os-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>${glassfish.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 <div id="app">
-    {{ message }}
+    <h1>Cities</h1>
+    <ul>
+        <li v-for="city in cities">{{city.id}}</li>
+    </ul>
 </div>
 
 <script src="js/main.js"></script>

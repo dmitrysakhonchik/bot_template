@@ -2,13 +2,14 @@ package by.sakhonchik.bot.controllers;
 
 import by.sakhonchik.bot.entities.City;
 import by.sakhonchik.bot.services.CityServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin("http://localhost:63342")
+
 @RestController
-@RequestMapping("api/v1/item")
+@RequestMapping("api/v1/city")
 public class CityController {
 
     private final CityServiceImpl service;
@@ -33,4 +34,12 @@ public class CityController {
     public void delete(@PathVariable("id") Long id) {
         service.deleteCityById(id);
     }
+
+    @PutMapping("/{id}")
+    public City update(@PathVariable("id") City cityFromDb,
+                       @RequestBody City city) {
+        BeanUtils.copyProperties(city, cityFromDb, "id");
+        return service.addCity(cityFromDb);
+    }
+
 }
