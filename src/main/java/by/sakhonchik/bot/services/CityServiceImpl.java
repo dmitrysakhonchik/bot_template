@@ -34,6 +34,11 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
+    public City getCityById(Long id) {
+        return repository.getOne(id);
+    }
+
+    @Override
     public City addCity(City city) {
         return repository.save(city);
     }

@@ -1,14 +1,15 @@
 package by.sakhonchik.bot.entities;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "city")
-@NoArgsConstructor
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +20,6 @@ public class City {
 
     @Column(name = "info")
     private String info;
+
+
 }

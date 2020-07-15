@@ -19,7 +19,7 @@ public class CityController {
         this.service = service;
     }
 
-    @GetMapping(path = "/all", produces = "application/json")
+    @GetMapping(path = "all", produces = "application/json")
     public List<City> showAllCity() {
         return service.getAllCity();
     }
@@ -30,16 +30,17 @@ public class CityController {
         return service.addCity(city);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "{id}")
     public void delete(@PathVariable("id") Long id) {
         service.deleteCityById(id);
     }
 
-//    @PutMapping("/{id}")
-//    public City update(@PathVariable("id") City cityFromDb,
-//                       @RequestBody City city) {
-//        BeanUtils.copyProperties(city, cityFromDb, "id");
-//        return service.addCity(cityFromDb);
-//    }
+    @PutMapping("{id}")
+    public City update(@PathVariable("id") Long id,
+                       @RequestBody City city) {
+        City cityFromDb = service.getCityById(id);
+        BeanUtils.copyProperties(city, cityFromDb, "id");
+        return service.addCity(cityFromDb);
+    }
 
 }
