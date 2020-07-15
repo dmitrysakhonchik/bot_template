@@ -1,4 +1,4 @@
-const apiURL = "http://localhost:8080/api/v1/city/all";
+const apiUrlAll = "http://localhost:8080/api/v1/city/all";
 new Vue({
     el: '#app',
     data() {
@@ -7,7 +7,7 @@ new Vue({
         }
     },
     created() {
-        fetch(apiURL )
+        fetch(apiUrlAll)
             .then(response => {
                 return response.json();
             })

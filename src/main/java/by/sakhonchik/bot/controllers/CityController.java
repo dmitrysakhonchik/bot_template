@@ -35,11 +35,11 @@ public class CityController {
         service.deleteCityById(id);
     }
 
-    @PutMapping("/{id}")
-    public City update(@PathVariable("id") City cityFromDb,
-                       @RequestBody City city) {
-        BeanUtils.copyProperties(city, cityFromDb, "id");
-        return service.addCity(cityFromDb);
-    }
+//    @PutMapping("/{id}")
+//    public City update(@PathVariable("id") City cityFromDb,
+//                       @RequestBody City city) {
+//        BeanUtils.copyProperties(city, cityFromDb, "id");
+//        return service.addCity(cityFromDb);
+//    }
 
 }
