@@ -15,14 +15,16 @@
     <div class="input-group mb-3 mt-3">
         <div>
             <input type="text" class="form-control" placeholder="City"
-                   aria-label="City" aria-describedby="basic-addon2">
+                   aria-label="City" aria-describedby="basic-addon2"
+                   v-model="city">
         </div>
 
         <input type="text" class="form-control" placeholder="Information"
-               aria-label="Information" aria-describedby="basic-addon2">
+               aria-label="Information" aria-describedby="basic-addon2"
+               v-model="information">
 
         <div class="input-group-append">
-            <button class="btn btn-primary" type="submit">Add city</button>
+            <button class="btn btn-primary" type="submit" v-on:click="addCity(city,information)">Add city</button>
         </div>
     </div>
 
@@ -39,14 +41,28 @@
         <tbody>
         <tr v-for="city in cities ">
             <td>{{city.id}}</td>
-            <td>{{city.name}}</td>
-            <td>{{city.info}}</td>
             <td>
-                <button type="submit" class="btn btn-outline-success">Edit</button>
+                <input type="text" v-if="editing === city.id" v-model="editingName">
+                <span v-else>{{city.name}}</span>
             </td>
             <td>
-                <button type="submit" class="btn btn-outline-danger" >Delete</button>
+                <textarea v-if="editing === city.id" v-model="editingInfo"></textarea>
+                <span v-else>{{city.info}}</span>
             </td>
+            <td>
+                <button type="submit" class="btn btn-outline-success" v-if="editing === city.id"
+                        v-on:click="update(city.id, editingName, editingInfo)">Save
+                </button>
+                <button type="submit" class="btn btn-outline-success" v-if="editing === city.id" v-on:click="cancel()">
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-outline-success" v-else v-on:click="editCity(city.id)">Edit
+                </button>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-outline-danger" v-on:click="deleteCity(city.id)">Delete</button>
+            </td>
+
 
         </tr>
         </tbody>

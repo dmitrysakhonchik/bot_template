@@ -61,6 +61,6 @@ public class ResCityInfoBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "";
+        return "1306205345:AAHo1BgyqLMSNaWU4xzquFwM1oaGQQIYStI";
     }
 }
