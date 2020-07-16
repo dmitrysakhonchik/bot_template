@@ -10,5 +10,9 @@ let app = new Vue({
             .get(apiUrlAll)
             .then(response => this.cities = response.data)
     }
+
 });
+
+
+
 
