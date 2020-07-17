@@ -42,18 +42,18 @@
         <tr v-for="city in cities ">
             <td>{{city.id}}</td>
             <td>
-                <input type="text" v-if="editing === city.id" v-model="editingName">
+                <input type="text" class="form-control" v-if="editing === city.id" v-model="editingName">
                 <span v-else>{{city.name}}</span>
             </td>
             <td>
-                <textarea v-if="editing === city.id" v-model="editingInfo"></textarea>
+                <textarea class="form-control" v-if="editing === city.id" v-model="editingInfo"></textarea>
                 <span v-else>{{city.info}}</span>
             </td>
             <td>
                 <button type="submit" class="btn btn-outline-success" v-if="editing === city.id"
                         v-on:click="update(city.id, editingName, editingInfo)">Save
                 </button>
-                <button type="submit" class="btn btn-outline-success" v-if="editing === city.id" v-on:click="cancel()">
+                <button type="submit" class="btn btn-outline-warning" v-if="editing === city.id" v-on:click="cancel()">
                     Cancel
                 </button>
                 <button type="submit" class="btn btn-outline-success" v-else v-on:click="editCity(city.id)">Edit

@@ -7,6 +7,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Implementations of {@link CityService} interface.
+ *
+ * @author Dmitry Sakhonchik
+ * @version 1.0
+ */
+
 @Service
 public class CityServiceImpl implements CityService {
 

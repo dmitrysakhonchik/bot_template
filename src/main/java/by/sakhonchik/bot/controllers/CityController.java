@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller for {@link City} connected requests.
+ *
+ * @author Dmitry Sakhonchik
+ * @version 1.0
+ */
+
+
 @RestController
 @RequestMapping("api/v1/city")
 public class CityController {
@@ -23,7 +31,6 @@ public class CityController {
     public List<City> showAllCity() {
         return service.getAllCity();
     }
-
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public City create(@RequestBody City city) {

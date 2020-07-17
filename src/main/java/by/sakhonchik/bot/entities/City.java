@@ -1,11 +1,15 @@
 package by.sakhonchik.bot.entities;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
+
+/**
+ * Simple JavaBean domain object that represents City.
+ *
+ * @author Dmitry Sakhonchik
+ * @version 1.0
+ */
 
 @Data
 @Entity

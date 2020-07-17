@@ -9,6 +9,10 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+/**
+ * @author Dmitry Sakhonchik
+ */
+
 @Component
 public class ResCityInfoBot extends TelegramLongPollingBot {
 
@@ -52,7 +56,6 @@ public class ResCityInfoBot extends TelegramLongPollingBot {
     public boolean doesTheCityExist(Message messageFromUser) {
         return cityService.isExist(messageFromUser.getText());
     }
-
 
     @Override
     public String getBotUsername() {
