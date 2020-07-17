@@ -4,6 +4,9 @@ import by.sakhonchik.bot.entities.City;
 import by.sakhonchik.bot.services.CityServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,26 +31,51 @@ public class CityController {
     }
 
     @GetMapping(path = "all", produces = "application/json")
-    public List<City> showAllCity() {
-        return service.getAllCity();
+    public ResponseEntity<List<City>> showAllCity() {
+        List<City> cities = this.service.getAllCity();
+
+        if (cities.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 
-    @PostMapping(consumes = "application/json", produces = "application/json")
-    public City create(@RequestBody City city) {
-        return service.addCity(city);
+    @PostMapping(produces = "application/json")
+    public ResponseEntity<City> create(@RequestBody City city) {
+        HttpHeaders headers = new HttpHeaders();
+
+        if (city == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        this.service.addCity(city);
+        return new ResponseEntity<>(city, headers, HttpStatus.CREATED);
+
     }
 
-    @DeleteMapping(path = "{id}")
-    public void delete(@PathVariable("id") Long id) {
-        service.deleteCityById(id);
+    @DeleteMapping(path = "{id}", produces = "application/json")
+    public ResponseEntity<City> delete(@PathVariable("id") Long id) {
+        City city = this.service.getCityById(id);
+
+        if (city == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        this.service.deleteCityById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
     }
 
-    @PutMapping("{id}")
+
+    @PutMapping(path = "{id}", produces = "application/json")
     public City update(@PathVariable("id") Long id,
                        @RequestBody City city) {
+
         City cityFromDb = service.getCityById(id);
         BeanUtils.copyProperties(city, cityFromDb, "id");
         return service.addCity(cityFromDb);
+
+
     }
 
 }

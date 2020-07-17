@@ -59,11 +59,11 @@ public class ResCityInfoBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "ResCityBot";
-    }
+        return "";
+    } //TODO add bot username
 
     @Override
     public String getBotToken() {
-        return "1306205345:AAHo1BgyqLMSNaWU4xzquFwM1oaGQQIYStI";
-    }
+        return "";
+    } //TODO add bot token
 }

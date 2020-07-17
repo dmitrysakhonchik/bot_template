@@ -1,6 +1,4 @@
 const apiUrlAll = "http://localhost:8080/api/v1/city/all";
-const deleteCity = "http://localhost:8080/api/v1/city/";
-
 
 new Vue({
     el: '#app',
